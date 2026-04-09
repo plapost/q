@@ -37,8 +37,6 @@ content="A private platform for players who value strategy, intelligence, and a 
 
 <style>
 
-/* CSS unchanged */
-
 :root{
 --bg:#070503;
 --bg-deep:#0d0905;
@@ -55,7 +53,312 @@ content="A private platform for players who value strategy, intelligence, and a 
 --shadow:0 30px 80px rgba(0,0,0,0.58);
 }
 
-/* all styles preserved exactly */
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Inter,Arial,sans-serif;
+color:var(--text);
+background:
+linear-gradient(rgba(8,5,3,0.78), rgba(8,5,3,0.9)),
+radial-gradient(circle at top left, rgba(227,187,114,0.10), transparent 24%),
+radial-gradient(circle at bottom right, rgba(120,74,26,0.22), transparent 28%),
+linear-gradient(135deg, var(--bg) 0%, var(--bg-deep) 50%, var(--bg2) 100%);
+min-height:100vh;
+overflow-x:hidden;
+position:relative;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+opacity:.09;
+background-image:
+repeating-linear-gradient(
+115deg,
+rgba(255,145,0,0.08) 0px,
+rgba(255,145,0,0.08) 2px,
+transparent 2px,
+transparent 34px,
+rgba(0,0,0,0.14) 34px,
+rgba(0,0,0,0.14) 36px,
+transparent 36px,
+transparent 70px
+);
+mix-blend-mode:screen;
+}
+
+body::after{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+background:
+radial-gradient(circle at 15% 15%, rgba(255,180,65,0.10), transparent 18%),
+radial-gradient(circle at 85% 80%, rgba(255,140,40,0.09), transparent 18%);
+filter:blur(70px);
+opacity:.8;
+}
+
+.wrapper{
+position:relative;
+z-index:2;
+width:100%;
+max-width:1280px;
+margin:0 auto;
+padding:28px 20px 48px;
+}
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+padding:8px 2px 24px;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:14px;
+}
+
+.brand-mark{
+width:52px;
+height:52px;
+border-radius:16px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:26px;
+background:linear-gradient(145deg, rgba(227,187,114,0.18), rgba(120,70,20,0.20));
+border:1px solid rgba(227,187,114,0.24);
+box-shadow:inset 0 1px 0 rgba(255,255,255,0.06), 0 10px 24px rgba(0,0,0,0.28);
+}
+
+.brand-text{
+display:flex;
+flex-direction:column;
+}
+
+.brand-text strong{
+font-family:"Cormorant Garamond", serif;
+font-size:28px;
+line-height:1;
+letter-spacing:.03em;
+color:#f5deae;
+font-weight:700;
+}
+
+.brand-text span{
+color:var(--muted);
+font-size:13px;
+letter-spacing:.10em;
+text-transform:uppercase;
+margin-top:4px;
+}
+
+.nav-cta{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:12px 18px;
+border-radius:999px;
+border:1px solid rgba(227,187,114,0.22);
+background:rgba(255,255,255,0.03);
+color:var(--text);
+text-decoration:none;
+font-weight:600;
+font-size:14px;
+transition:.25s ease;
+backdrop-filter:blur(10px);
+}
+
+.nav-cta:hover{
+transform:translateY(-2px);
+border-color:rgba(227,187,114,0.42);
+box-shadow:0 14px 36px rgba(0,0,0,0.28);
+}
+
+.hero{
+position:relative;
+display:grid;
+grid-template-columns:1.08fr .92fr;
+gap:24px;
+align-items:stretch;
+}
+
+.hero-card{
+position:relative;
+overflow:hidden;
+border:1px solid var(--stroke);
+background:
+linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
+linear-gradient(135deg, rgba(28,18,10,0.92), rgba(10,8,6,0.92));
+backdrop-filter:blur(20px);
+border-radius:34px;
+box-shadow:var(--shadow);
+padding:52px 42px;
+min-height:700px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.label{
+display:inline-flex;
+align-items:center;
+gap:10px;
+align-self:flex-start;
+padding:11px 18px;
+border-radius:999px;
+border:1px solid rgba(227,187,114,0.22);
+background:rgba(255,255,255,0.04);
+color:#f0d6a0;
+font-size:12px;
+font-weight:700;
+letter-spacing:0.16em;
+text-transform:uppercase;
+margin-bottom:24px;
+}
+
+h1{
+font-family:"Cormorant Garamond", serif;
+font-size:clamp(46px, 7vw, 86px);
+line-height:0.92;
+letter-spacing:-0.03em;
+font-weight:700;
+margin-bottom:24px;
+}
+
+.subtitle{
+max-width:680px;
+margin:0 0 28px;
+color:var(--muted);
+font-size:18px;
+line-height:1.8;
+}
+
+.meta{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+margin-bottom:28px;
+}
+
+.meta span{
+padding:11px 16px;
+border-radius:999px;
+background:var(--accent);
+border:1px solid rgba(227,187,114,0.16);
+color:var(--text);
+font-size:14px;
+font-weight:500;
+}
+
+.offer-box{
+margin:0 0 28px;
+padding:22px;
+border-radius:24px;
+background:
+linear-gradient(180deg, rgba(227,187,114,0.10), rgba(227,187,114,0.04));
+border:1px solid rgba(227,187,114,0.20);
+}
+
+.offer-title{
+font-size:18px;
+font-weight:700;
+color:#f6dfb2;
+}
+
+.offer-text{
+color:#e7dcc8;
+font-size:15px;
+line-height:1.75;
+}
+
+.actions{
+display:flex;
+flex-wrap:wrap;
+gap:14px;
+align-items:center;
+}
+
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-width:240px;
+height:60px;
+padding:0 28px;
+border-radius:999px;
+text-decoration:none;
+font-weight:800;
+font-size:16px;
+cursor:pointer;
+border:none;
+}
+
+.btn-primary{
+color:#140d06;
+background:linear-gradient(135deg,#f7e5b8 0%, #d5a255 55%, #f7d792 100%);
+}
+
+.btn-secondary{
+color:var(--text);
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(227,187,114,0.18);
+}
+
+.note{
+margin-top:16px;
+font-size:13px;
+color:#bfae8e;
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(3, 1fr);
+gap:18px;
+margin-top:22px;
+}
+
+.feature{
+padding:22px;
+border-radius:24px;
+background:
+linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+border:1px solid rgba(227,187,114,0.12);
+}
+
+.feature h3{
+font-size:18px;
+margin-bottom:10px;
+font-weight:700;
+color:#f4deaf;
+}
+
+.feature p{
+font-size:15px;
+line-height:1.75;
+color:var(--muted);
+}
+
+.footer{
+padding:28px 8px 0;
+text-align:center;
+color:#9e8f77;
+font-size:13px;
+}
 
 </style>
 </head>
@@ -101,10 +404,7 @@ for those who value strategy, intelligence, and a high level of poker.
 </div>
 
 <div class="offer-box">
-<div class="offer-top">
-<div class="offer-badge">🎁</div>
 <div class="offer-title">Bonus for New Players</div>
-</div>
 <p class="offer-text">
 Want to receive a <strong>welcome bonus</strong>? Message us on Telegram and find out
 which bonus is currently available for new players.
@@ -134,22 +434,10 @@ Private access, current conditions, and bonus details — available in Telegram.
 
 </div>
 
-<div class="visual-card">
-<div class="visual-overlay">
-<div class="visual-kicker">Tiger Luxury Style</div>
-<div class="visual-title">A Game for Those Who Value Quality</div>
-<div class="visual-text">
-Private club style, a premium atmosphere, and focus on strong gameplay —
-without visual noise, cheap gloss, or overloaded design.
-</div>
-</div>
-</div>
-
 </section>
 
 <section class="features">
 <div class="feature">
-<div class="feature-icon">♠️</div>
 <h3>Fair Gaming Environment</h3>
 <p>
 A platform for players who value discipline, strategy, and a high level of poker culture.
@@ -157,15 +445,13 @@ A platform for players who value discipline, strategy, and a high level of poker
 </div>
 
 <div class="feature">
-<div class="feature-icon">🏆</div>
 <h3>Premium Atmosphere</h3>
 <p>
-A restrained luxury aesthetic, private access, and a focus on quality experience rather than visual noise.
+A restrained luxury aesthetic, private access, and a focus on quality experience.
 </p>
 </div>
 
 <div class="feature">
-<div class="feature-icon">💬</div>
 <h3>Quick Access via Telegram</h3>
 <p>
 To get access and learn about the current bonus, simply message us on Telegram.
